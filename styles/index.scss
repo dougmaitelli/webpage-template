@@ -1,3 +1,24 @@
 @charset "UTF-8";
 
+$primaryColor: rgba(255, 86, 102, 1);
+$secondaryColor: rgba(239, 118, 122, 1);
+$darkColor: rgba(57, 42, 22, 1);
+$lightColor: rgba(255, 255, 255, 1);
+
+$linkColor: $secondaryColor;
+$linkActiveColor: $primaryColor;
+
+$body-bg: $secondaryColor;
+
+$jumbotron-bg: $lightColor;
+
+$theme-colors: (
+  "primary": $primaryColor,
+  "secondary": $secondaryColor,
+  "light": $lightColor
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import "navigation";
 @import "main";

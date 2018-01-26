@@ -1,56 +1,30 @@
 import React from "react";
 import Navigation from "./components/Navigation";
-import "bootstrap/dist/css/bootstrap.css";
 import "styles/index.scss";
 
 const App = () => (
-	<nav class="site-header sticky-top py-1">
-		<div class="container d-flex flex-column flex-md-row justify-content-between">
-			<a class="py-2" href="#">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="d-block mx-auto"
-				>
-					<circle cx="12" cy="12" r="10" />
-					<line x1="14.31" y1="8" x2="20.05" y2="17.94" />
-					<line x1="9.69" y1="8" x2="21.17" y2="8" />
-					<line x1="7.38" y1="12" x2="13.12" y2="2.06" />
-					<line x1="9.69" y1="16" x2="3.95" y2="6.06" />
-					<line x1="14.31" y1="16" x2="2.83" y2="16" />
-					<line x1="16.62" y1="12" x2="10.88" y2="21.94" />
-				</svg>
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Tour
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Product
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Features
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Enterprise
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Support
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Pricing
-			</a>
-			<a class="py-2 d-none d-md-inline-block" href="#">
-				Cart
-			</a>
+	<div className="App">
+		<Navigation />
+		<div class="mainContainer container">
+			<div class="jumbotron">
+				<h1 class="display-4">Hello, world!</h1>
+				<p class="lead">
+					This is a simple hero unit, a simple jumbotron-style component for
+					calling extra attention to featured content or information.
+				</p>
+				<hr class="my-4" />
+				<p>
+					It uses utility classes for typography and spacing to space content
+					out within the larger container.
+				</p>
+				<p class="lead">
+					<a class="btn btn-primary btn-lg" href="#" role="button">
+						Learn more
+					</a>
+				</p>
+			</div>
 		</div>
-	</nav>
+	</div>
 );
 
 export default App;
