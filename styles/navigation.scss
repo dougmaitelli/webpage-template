@@ -8,11 +8,11 @@
 
   .logo {
     height: 40px;
-    fill: $primaryColor;
+    fill: $lightColor;
   }
 
   a:not(:first-child) {
-    color: $linkColor;
+    color: $lightColor;
     transition: ease-in-out color 0.15s;
     line-height: 45px;
 
