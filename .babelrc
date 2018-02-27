@@ -2,8 +2,6 @@
   "presets": ["env", "react"],
   "plugins": [
     "transform-runtime",
-    "transform-decorators-legacy",
-    "transform-class-properties",
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
@@ -15,9 +13,7 @@
   "env": {
     "test": {
       "plugins": [
-        "transform-runtime",
-        "transform-decorators-legacy",
-        "transform-class-properties"
+        "transform-runtime"
       ]
     }
   }
