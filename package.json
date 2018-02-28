@@ -4,8 +4,7 @@
   "description": "",
   "main": "''",
   "scripts": {
-    "build":
-      "webpack --mode production --config webpack.production.config.js --progress --colors",
+    "build": "webpack --mode production --progress --colors",
     "dev": "webpack-dev-server --mode production --progress --colors",
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "test": "export NODE_ENV=test && jest"

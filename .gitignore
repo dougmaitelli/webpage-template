@@ -7,4 +7,4 @@ coverage
 __snapshots__
 
 # Ignore build files
-build
+dist
