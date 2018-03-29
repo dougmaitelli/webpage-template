@@ -45,6 +45,7 @@
     "loglevel": "^1.6.1",
     "postcss-loader": "^2.1.1",
     "raw-loader": "^0.5.1",
+    "react-hot-loader": "^4.0.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-test-renderer": "^16.2.0",

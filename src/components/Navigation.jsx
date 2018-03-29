@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-let logo = require("raw-loader!images/logo.svg");
+import logo from "!!raw-loader!../images/logo.svg";
 
 const Navigation = () => (
 	<nav className="site-header sticky-top py-1">
 		<div className="container d-flex flex-column flex-md-row justify-content-between">
-			<a className="py-2" href="#">
-				{logo}
-			</a>
+			<a
+				className="py-2 logo"
+				href="#"
+				dangerouslySetInnerHTML={{ __html: logo }}
+			/>
 			<a className="py-2 d-none d-md-inline-block" href="#">
 				Tour
 			</a>
