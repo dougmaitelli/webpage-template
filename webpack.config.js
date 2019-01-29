@@ -1,19 +1,30 @@
 "use strict";
+
 var path = require("path");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+var WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 
 let loaders = [
 	{
-		test: /\.jsx?$/,
+		test: /\.tsx?$/,
 		exclude: /(node_modules|bower_components|public\/)/,
-		loader: "babel-loader"
+		loader: "awesome-typescript-loader"
 	},
+	{ enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
 	{
 		test: /\.css$/,
-		loaders: ["style-loader", "css-loader?importLoaders=1"],
-		exclude: ["node_modules"]
+		loaders: [
+			"style-loader", 
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 1,
+				},
+			}
+		],
+		exclude: [path.join(__dirname + "node_modules")]
 	},
 	{
 		test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -56,37 +67,45 @@ module.exports = (env, argv) => {
 	if (argv.mode === "production") {
 		loaders.push({
 			test: /\.scss$/,
-			loader: ExtractTextPlugin.extract({
-				fallback: "style-loader",
-				use: [
-					{
-						loader: "css-loader",
-						options: {
-							minimize: true,
-							sourceMap: true
-						}
-					},
-					{
-						loader: "sass-loader",
-						options: {
-							sourceMap: true
-						}
+			use: [
+				{
+					loader: MiniCssExtractPlugin.loader
+				},
+				{
+					loader: "css-loader",
+					options: {
+						sourceMap: true
 					}
-				]
-			}),
-			exclude: ["node_modules"]
+				},
+				{
+					loader: "sass-loader",
+					options: {
+						sourceMap: true
+					}
+				}
+			],
+			exclude: [path.join(__dirname + "node_modules")]
 		});
 	} else {
 		loaders.push({
 			test: /\.scss$/,
-			loaders: ["style-loader", "css-loader?importLoaders=1", "sass-loader"],
-			exclude: ["node_modules"]
+			loaders: [
+				"style-loader",
+				{
+					loader: 'css-loader',
+					options: {
+						importLoaders: 1
+					},
+				},
+				"sass-loader"],
+			exclude: [path.join(__dirname + "node_modules")]
 		});
 	}
 
 	return {
 		entry: {
-			"app.bundle": "./src/index.jsx"
+			"app.bundle": "./src/index.tsx",
+			vendor: ['react', 'react-dom']
 		},
 		output: {
 			publicPath: "/",
@@ -94,7 +113,10 @@ module.exports = (env, argv) => {
 			filename: argv.mode === "production" ? "[name].[hash].js" : "[name].js"
 		},
 		resolve: {
-			extensions: [".js", ".jsx"]
+			extensions: [".ts", ".tsx", ".js", ".json"],
+			plugins: [
+				new TsConfigPathsPlugin()
+			]
 		},
 		module: {
 			rules: loaders
@@ -107,7 +129,7 @@ module.exports = (env, argv) => {
 		},
 		plugins: [
 			new WebpackCleanupPlugin(),
-			new ExtractTextPlugin({
+			new MiniCssExtractPlugin({
 				publicPath: "/",
 				filename: "[name].[contenthash].css"
 			}),

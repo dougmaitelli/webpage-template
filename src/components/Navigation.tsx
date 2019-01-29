@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import { Link } from "react-router-dom";
 
-import logo from "!!raw-loader!../images/logo.svg";
+const logo = require("!!raw-loader!../images/logo.svg");
 
 const Navigation = () => (
 	<nav className="site-header sticky-top py-1">

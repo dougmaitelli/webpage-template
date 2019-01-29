@@ -1,6 +1,7 @@
-import React from "react";
+import * as React from "react";
 import Navigation from "./components/Navigation";
-import "styles/index.scss";
+
+import "@styles/index.scss";
 
 const App = () => (
 	<div className="App">
