@@ -1,10 +1,13 @@
 "use strict";
 
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
-var WebpackCleanupPlugin = require("webpack-cleanup-plugin");
+const path = require("path");
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 
 let loaders = [
 	{
@@ -22,7 +25,8 @@ let loaders = [
 				options: {
 					importLoaders: 1,
 				},
-			}
+			},
+			'postcss-loader'
 		],
 		exclude: [path.join(__dirname + "node_modules")]
 	},
@@ -77,6 +81,7 @@ module.exports = (env, argv) => {
 						sourceMap: true
 					}
 				},
+				'postcss-loader',
 				{
 					loader: "sass-loader",
 					options: {
@@ -97,6 +102,7 @@ module.exports = (env, argv) => {
 						importLoaders: 1
 					},
 				},
+				'postcss-loader',
 				"sass-loader"],
 			exclude: [path.join(__dirname + "node_modules")]
 		});
@@ -127,6 +133,16 @@ module.exports = (env, argv) => {
 			// serve index.html in place of 404 responses to allow HTML5 history
 			historyApiFallback: true
 		},
+		optimization: {
+			minimizer: [
+			  new UglifyJsPlugin({
+				cache: true,
+				parallel: true,
+				sourceMap: true
+			  }),
+			  new OptimizeCSSAssetsPlugin({})
+			]
+		  },
 		plugins: [
 			new WebpackCleanupPlugin(),
 			new MiniCssExtractPlugin({
