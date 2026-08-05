@@ -4,82 +4,53 @@
   "description": "",
   "main": "",
   "scripts": {
-    "build": "webpack --mode production --progress --colors",
-    "dev": "webpack-dev-server --mode development --progress --colors",
-    "lint": "eslint --ext js --ext jsx src || exit 0",
-    "test": "export NODE_ENV=test && jest"
+    "build": "webpack --mode production --progress",
+    "dev": "webpack serve --mode development --progress",
+    "lint": "eslint src webpack.config.js postcss.config.js",
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:dougmaitelli/newstar.git"
+    "url": "git@github.com:dougmaitelli/webpage-template.git"
   },
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "bootstrap": "^4.5.2",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "sass-loader": "^10.0.2"
+    "bootstrap": "^5.3.8",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@types/enzyme": "^3.10.6",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^26.0.13",
-    "@types/node": "^14.10.0",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-router-dom": "^5.1.5",
-    "autoprefixer": "^9.8.6",
-    "awesome-typescript-loader": "^5.2.1",
-    "css-loader": "^4.3.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.4",
-    "eslint": "^7.8.1",
-    "eslint-plugin-jest": "^24.0.0",
-    "eslint-plugin-react": "^7.20.6",
-    "file-loader": "^6.1.0",
-    "html-webpack-plugin": "^4.4.1",
-    "jest": "^26.4.2",
-    "loglevel": "^1.7.0",
-    "mini-css-extract-plugin": "^0.11.1",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
-    "postcss-loader": "^4.0.1",
-    "raw-loader": "^4.0.1",
-    "react-hot-loader": "^4.12.21",
-    "react-router-dom": "^5.2.0",
-    "react-router-redux": "^4.0.8",
-    "react-test-renderer": "^16.13.1",
-    "source-map-loader": "^1.1.0",
-    "style-loader": "^1.2.1",
-    "ts-jest": "^26.3.0",
-    "typescript": "^4.0.2",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "url-loader": "^4.1.0",
-    "webpack": "^4.44.1",
-    "webpack-cleanup-plugin": "^0.5.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "@typescript-eslint/parser": "^8.66.0",
+    "autoprefixer": "^10.5.4",
+    "css-loader": "^7.1.4",
+    "css-minimizer-webpack-plugin": "^8.0.0",
+    "eslint": "^10.8.0",
+    "html-webpack-plugin": "^5.6.8",
+    "jsdom": "^30.0.1",
+    "mini-css-extract-plugin": "^2.10.2",
+    "postcss": "^8.5.25",
+    "postcss-loader": "^8.2.1",
+    "sass": "^1.102.0",
+    "sass-loader": "^17.0.0",
+    "source-map-loader": "^5.0.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.6.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10",
+    "webpack": "^5.109.2",
+    "webpack-cli": "^7.2.2",
+    "webpack-dev-server": "^6.0.0"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
-  "jest": {
-    "verbose": true,
-    "bail": true,
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "moduleNameMapper": {
-      "\\.(jpe?g|png|gif|eot|otf|webp|svg|ttf|woff2?|mp[34]|webm|wav|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less|s[ac]ss|styl)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
-  }
+  ]
 }

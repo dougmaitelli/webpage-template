@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { configure, mount } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
-import Routes from '../routes';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import App from "../app";
 
-configure({ adapter: new Adapter() });
+describe("app", () => {
+  it("renders without crashing", () => {
+    render(<App />);
 
-describe('app', () => {
-  it('renders without crashing', () => {
-    mount(<Routes />);
+    expect(screen.getByRole("heading", { name: "Hello, world!" })).toBeInTheDocument();
   });
 });

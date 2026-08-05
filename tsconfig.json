@@ -1,17 +1,15 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es5",
-        "jsx": "react",
-        "paths": {
-            "@styles/*": ["styles/*"],
-        }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": false,
+    "noImplicitAny": true,
+    "paths": {
+      "@styles/*": ["./styles/*"]
     },
-    "include": [
-        "./src/**/*"
-    ]
+    "target": "es2022"
+  },
+  "include": ["src/**/*"]
 }
